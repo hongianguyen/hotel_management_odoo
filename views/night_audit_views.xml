@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Night Audit List View -->
+    <record id="night_audit_view_list" model="ir.ui.view">
+        <field name="name">night.audit.view.list</field>
+        <field name="model">night.audit</field>
+        <field name="arch" type="xml">
+            <list string="Night Audit Log" default_order="audit_date desc">
+                <field name="audit_date"/>
+                <field name="total_rooms"/>
+                <field name="occupied_rooms"/>
+                <field name="available_rooms"/>
+                <field name="new_checkins"/>
+                <field name="new_checkouts"/>
+                <field name="revenue_today"/>
+                <field name="revenue_total"/>
+                <field name="pending_payment"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Night Audit Form View -->
+    <record id="night_audit_view_form" model="ir.ui.view">
+        <field name="name">night.audit.view.form</field>
+        <field name="model">night.audit</field>
+        <field name="arch" type="xml">
+            <form string="Night Audit" create="false" edit="false">
+                <sheet>
+                    <h1>
+                        <field name="audit_date"/>
+                    </h1>
+                    <group>
+                        <group string="Room Statistics">
+                            <field name="total_rooms"/>
+                            <field name="occupied_rooms"/>
+                            <field name="available_rooms"/>
+                            <field name="new_checkins"/>
+                            <field name="new_checkouts"/>
+                        </group>
+                        <group string="Financial Summary">
+                            <field name="currency_id" invisible="1"/>
+                            <field name="revenue_today"/>
+                            <field name="revenue_total"/>
+                            <field name="pending_payment"/>
+                        </group>
+                    </group>
+                    <group string="Notes">
+                        <field name="notes" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Night Audit Action -->
+    <record id="night_audit_action" model="ir.actions.act_window">
+        <field name="name">Night Audit</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">night.audit</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Night Audit Menu -->
+    <menuitem
+        id="night_audit_menu"
+        name="Night Audit"
+        action="night_audit_action"
+        parent="hotel_reporting_menu"
+        sequence="30"
+        groups="hotel_management_odoo.hotel_group_admin"/>
+</odoo>

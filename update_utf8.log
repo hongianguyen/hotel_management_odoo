@@ -1,0 +1,50 @@
+﻿    return self._xmlid_lookup(xmlid)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/cache.py", line 98, in lookup
+    return self.lookup(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/cache.py", line 155, in lookup
+    value = self.method(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_model.py", line 2270, in _xmlid_lookup
+    raise ValueError('External ID not found in the system: %s' % xmlid)
+ValueError: External ID not found in the system: hotel_management_odoo.module_category_hotel_management
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1510, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], 
+upgrade_modules=config['update'], reinit_modules=config['reinit'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 199, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 456, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 209, in load_module_graph
+    load_data(env, idref, 'init', kind='data', package=package)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 59, in load_data
+    convert_file(env, package.name, filename, idref, mode, noupdate=kind == 'demo')
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 693, in convert_file
+    convert_xml_import(env, module, fp, idref, mode, noupdate)
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 792, in convert_xml_import
+    obj.parse(doc.getroot())
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 663, in parse
+    self._tag_root(de)
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 618, in _tag_root
+    raise ParseError('while parsing %s:%s, somewhere inside\n%s' % (
+odoo.tools.convert.ParseError: while parsing 
+/mnt/extra-addons/Hotel_management/security/hotel_management_odoo_groups.xml:10, somewhere inside
+<record id="maintenance_team_group_user" model="res.groups">
+        <field name="name">Maintenance Team User</field>
+        <field name="category_id" ref="hotel_management_odoo.module_category_hotel_management"/>
+    </record>
+2026-02-26 08:16:13,549 298 INFO hotel_db odoo.service.server: Initiating shutdown 
+2026-02-26 08:16:13,549 298 INFO hotel_db odoo.service.server: Hit CTRL-C again or send a second signal to force 
+the shutdown. 
+2026-02-26 08:16:13,551 298 INFO hotel_db odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 
+connections  

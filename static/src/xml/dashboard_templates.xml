@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ResortPro 19 Dashboard Template - Odoo 19 OWL -->
+<templates>
+    <t t-name="hotel_management_odoo.CustomDashBoard">
+        <div class="oh_dashboards" style="margin-top: 20px;">
+            <div class="container-fluid o_pj_dashboard">
+                <t t-call="hotel_management_odoo.HotelOrder"/>
+            </div>
+        </div>
+    </t>
+    <t t-name="hotel_management_odoo.HotelOrder">
+        <div class="row main-section">
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.total_rooms(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#e39db5"><i class="fa fa-bed fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.total_room"/></div><div class="dash-head">Total Rooms</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.check_ins(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#87c773"><i class="fa fa-sign-in fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.check_in"/></div><div class="dash-head">Check In</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.available_rooms(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#3858d9"><i class="fa fa-check-circle fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.available_room"/></div><div class="dash-head">Available Rooms</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.reservations(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#384d2f"><i class="fa fa-bookmark fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.reservation"/></div><div class="dash-head">Reservations</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.check_outs(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#e07407"><i class="fa fa-sign-out fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.check_out"/></div><div class="dash-head">Today's Check-Out</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.fetch_total_staff(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#6e2940"><i class="fa fa-group fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.staff"/></div><div class="dash-head">Total Staff</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.fetch_total_vehicle(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#f5f39f"><i class="fa fa-car fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.total_vehicle"/></div><div class="dash-head">Total Vehicles</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.fetch_available_vehicle(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#269138"><i class="fa fa-car fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.available_vehicle"/></div><div class="dash-head">Available Vehicles</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.view_total_events(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#b0abdb"><i class="fa fa-ticket fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.total_event"/></div><div class="dash-head">Total Events</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.fetch_today_events(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#d9691a"><i class="fa fa-calendar fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.today_events"/></div><div class="dash-head">Today's Events</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.fetch_pending_events(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#e3372b"><i class="fa fa-exclamation-triangle fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.pending_events"/></div><div class="dash-head">Pending Events</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.fetch_food_item(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#d95f14"><i class="fa fa-cutlery fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.food_items"/></div><div class="dash-head">Food Items</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card" t-on-click="(e) => this.fetch_food_order(e)">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#f5cc02"><i class="fa fa-cutlery fa-lg"/></div><div class="card-body"><div class="dash-count"><t t-out="state.food_order"/></div><div class="dash-head">Food Orders</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#666660"><i class="fa fa-usd fa-lg"/></div><div class="card-body"><div class="dash-count" style="font-size:24px;"><t t-out="state.total_revenue"/></div><div class="dash-head">Total Revenue</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#397303"><i class="fa fa-money fa-lg"/></div><div class="card-body"><div class="dash-count" style="font-size:24px;"><t t-out="state.today_revenue"/></div><div class="dash-head">Today's Revenue</div></div></div>
+            </div>
+            <div class="col-md-3 col-sm-6 dash-card">
+                <div class="card" style="width:18rem"><div class="card-img-top dash-icon-1" style="color:#f0b686"><i class="fa fa-credit-card fa-lg"/></div><div class="card-body"><div class="dash-count" style="font-size:24px;"><t t-out="state.pending_payment"/></div><div class="dash-head">Pending Payment</div></div></div>
+            </div>
+        </div>
+    </t>
+</templates>
